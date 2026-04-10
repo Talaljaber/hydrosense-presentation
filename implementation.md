@@ -43,7 +43,7 @@ The chosen architecture is:
 **Multiple hydrophones + multiple vibration sensors → signal conditioning → multiplexer → ESP32 / processing pipeline → feature extraction → leak classification model → result transmission → remote dashboard**
 
 ### Key design decisions
-- Use both **hydrophones** and **vibration sensors**
+- Use both **hydrophones** and **vibration sensheors**
 - Use a **multiplexer** so multiple sensing points can share one system
 - Use an **ESP32** as the edge device
 - Use a **lightweight binary classification model**
