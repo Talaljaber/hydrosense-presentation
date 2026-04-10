@@ -3,12 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 const PAGES = [
   { id: 0, short: 'Problem' },
   { id: 1, short: 'Existing Solutions' },
-  { id: 3, short: 'Hub Architecture' },
-  { id: 4, short: 'Live Animation' },
-  { id: 5, short: 'Signal Pipeline' },
-  { id: 6, short: 'AI Decision' },
-  { id: 7, short: 'Dashboard' },
-  { id: 8, short: 'Final Value' },
+  { id: 2, short: 'Hub Architecture' },
+  { id: 3, short: 'Live Animation' },
+  { id: 4, short: 'Signal Pipeline' },
+  { id: 5, short: 'AI Decision' },
+  { id: 6, short: 'Dashboard' },
+  { id: 7, short: 'Final Value' },
 ];
 
 export const TITLES = [
