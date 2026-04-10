@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import PageNav, { TITLES } from './components/PageNav';
 import ProblemPage from './pages/ProblemPage';
 import ExistingSolutionsPage from './pages/ExistingSolutionsPage';
-import SolutionOverviewPage from './pages/SolutionOverviewPage';
 import HubArchitecturePage from './pages/HubArchitecturePage';
 import LiveLeakAnimationPage from './pages/LiveLeakAnimationPage';
 import SignalProcessingPage from './pages/SignalProcessingPage';
@@ -14,7 +13,6 @@ import FinalValuePage from './pages/FinalValuePage';
 const PAGES = [
   <ProblemPage />,
   <ExistingSolutionsPage />,
-  <SolutionOverviewPage />,
   <HubArchitecturePage />,
   <LiveLeakAnimationPage />,
   <SignalProcessingPage />,
