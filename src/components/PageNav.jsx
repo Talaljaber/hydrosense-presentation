@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 const PAGES = [
   { id: 0, short: 'Problem' },
   { id: 1, short: 'Existing Solutions' },
-  { id: 2, short: 'Solution Overview' },
   { id: 3, short: 'Hub Architecture' },
   { id: 4, short: 'Live Animation' },
   { id: 5, short: 'Signal Pipeline' },
