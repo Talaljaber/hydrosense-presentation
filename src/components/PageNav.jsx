@@ -5,10 +5,7 @@ const PAGES = [
   { id: 1, short: 'Existing Solutions' },
   { id: 2, short: 'Hub Architecture' },
   { id: 3, short: 'Live Animation' },
-  { id: 4, short: 'Signal Pipeline' },
-  { id: 5, short: 'AI Decision' },
-  { id: 6, short: 'Dashboard' },
-  { id: 7, short: 'Final Value' },
+  { id: 4, short: 'Final Value' },
 ];
 
 export const TITLES = [

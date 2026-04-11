@@ -5,9 +5,6 @@ import ProblemPage from './pages/ProblemPage';
 import ExistingSolutionsPage from './pages/ExistingSolutionsPage';
 import HubArchitecturePage from './pages/HubArchitecturePage';
 import LiveLeakAnimationPage from './pages/LiveLeakAnimationPage';
-import SignalProcessingPage from './pages/SignalProcessingPage';
-import AIDecisionPage from './pages/AIDecisionPage';
-import DashboardPage from './pages/DashboardPage';
 import FinalValuePage from './pages/FinalValuePage';
 
 const PAGES = [
@@ -15,9 +12,6 @@ const PAGES = [
   <ExistingSolutionsPage />,
   <HubArchitecturePage />,
   <LiveLeakAnimationPage />,
-  <SignalProcessingPage />,
-  <AIDecisionPage />,
-  <DashboardPage />,
   <FinalValuePage />,
 ];
 
