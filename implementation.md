@@ -1,624 +1,368 @@
-# HydroSense Jordan — Full Animation & Visualization Specification
-
-## 1. Project Overview
-
-**Project name:** HydroSense Jordan  
-**Concept:** A low-cost, multiplexed, multi-sensor leak detection hub for plastic water pipes in Jordanian infrastructure.  
-**Core purpose:** Detect whether a leak exists or not using hydrophones and vibration sensors connected to a shared ESP32-based system.  
-**Primary deliverable for this phase:** A clear, technically rich, screen-recordable animated visualization that explains the full system architecture and end-to-end process.
-
-This visualization is not meant to be a production dashboard and not meant to simulate exact fluid mechanics. It is a guided engineering explainer that shows the system from:
-- normal pipe operation
-- leak occurrence
-- sensor pickup
-- channel routing via multiplexer
-- signal processing
-- model inference
-- ESP32 communication
-- dashboard alert and impact display
-
----
-
-## 2. Problem Context
-
-Jordan’s water infrastructure relies heavily on **plastic pipes** rather than metallic pipes. Many established leak detection systems are designed for metal pipes, where acoustic signals travel farther and more clearly. Plastic pipes damp acoustic energy more strongly, which changes the sensing conditions and makes imported, conventional solutions less directly suitable.
-
-HydroSense Jordan focuses on:
-- **plastic-pipe environments**
-- **building-level or local hub monitoring**
-- **low-cost sensing**
-- **multiple sensors sharing a single ESP32-based processing path**
-- **binary decision only:** leak / no leak
-
-The system does **not** need advanced time-delay correlation or full industrial localization logic for this stage. The goal is simpler and more practical:
-- detect whether a leak is present
-- show confidence, impact, risk, and affected channel/location in a visual dashboard
-
----
-
-## 3. Final Technical Direction
-
-The chosen architecture is:
-
-**Multiple hydrophones + multiple vibration sensors → signal conditioning → multiplexer → ESP32 / processing pipeline → feature extraction → leak classification model → result transmission → remote dashboard**
-
-### Key design decisions
-- Use both **hydrophones** and **vibration sensheors**
-- Use a **multiplexer** so multiple sensing points can share one system
-- Use an **ESP32** as the edge device
-- Use a **lightweight binary classification model**
-- Show **Leak / No Leak** only
-- Show **impact, risk, confidence, and channel/location** on the dashboard
-- The visualization should explain the system deeply and clearly
-
----
-
-## 4. What the Animation Must Achieve
-
-The animation must answer this question clearly:
-
-> How does HydroSense detect a leak and convert that physical event into a useful digital alert?
-
-The viewer should understand:
-1. what physically happens in the pipe
-2. where the sensors are placed
-3. how the sensors capture the event
-4. why the multiplexer exists
-5. how the signal is processed
-6. how the model makes a decision
-7. how the ESP32 sends the result
-8. what appears on the dashboard
-
-The animation should remain technically meaningful even without narration.
-
----
-
-## 5. Visualization Philosophy
-
-This should be treated as a **technical system explainer**, not a generic UI.
-
-### It should feel like:
-- an engineering capstone visualization
-- a system architecture in motion
-- an educational technical animation
-
-### It should not feel like:
-- a commercial ad
-- a generic SaaS dashboard
-- a landing page
-- a login-based app
-- a cluttered monitoring portal
-
-### Design priorities
-- clarity
-- labeled components
-- left-to-right process flow
-- progressive highlighting
-- visible cause-and-effect
-- minimal but purposeful text
-- large readable elements for video recording
-
----
-
-## 6. System Architecture to Visualize
-
-The visualization must include these layers:
-
-### 6.1 Physical Layer
-- Water pipe
-- Flowing water inside the pipe
-- A small leak point
-- Hydrophones
-- Vibration sensors
-
-### 6.2 Aggregation Layer
-- Signal lines from sensors
-- Signal conditioning stage if shown
-- Multiplexer block
-- Channel labels (optional but recommended), such as CH1 / CH2 / CH3
-
-### 6.3 Processing Layer
-- Raw signal
-- Filtering / denoising
-- Feature extraction
-- Prepared feature representation
-
-### 6.4 Intelligence Layer
-- AI leak classification model
-- Binary output: Leak / No Leak
-- Confidence
-
-### 6.5 Communication Layer
-- ESP32
-- Wireless transmission
-
-### 6.6 Output Layer
-- Remote dashboard
-- Status
-- Risk
-- Impact
-- Confidence
-- Channel / approximate location
-
----
-
-## 7. Final Layout Specification
-
-The interface should be a **single wide canvas** with the full architecture visible.
-
-## 7.1 Left Zone — Pipe and Sensing Environment
-This is where the physical process is shown.
-
-Must include:
-- a horizontal pipe occupying a clear, important visual area
-- animated normal water flow
-- a subtle leak event appearing later
-- multiple sensing points attached around the pipe
-- hydrophone labels
-- vibration sensor labels
-
-This zone should visually communicate:
-- where the leak happens
-- how the event physically starts
-- where the sensors are
-
-## 7.2 Middle-Left Zone — Sensor Routing
-This zone shows:
-- signals leaving the sensors
-- signals moving toward the multiplexer
-- multiple channels sharing one path
-
-Must include:
-- a visually distinct **Multiplexer** block
-- route lines or animated paths
-- channel switching effect
-
-This zone should explain:
-- why several sensors do not need separate processors
-- how signals are selected and routed
-
-## 7.3 Middle Zone — Signal Processing Pipeline
-This zone is the digital pipeline.
-
-Must include:
-- Raw Signal
-- Filtering / Denoising
-- Feature Extraction
-
-Visual transformation sequence:
-- noisy waveform
-- cleaner waveform
-- spectrogram / MFCC-like heatmap / feature panel
-
-This zone should teach the viewer that:
-- the system does not classify raw sensor noise directly
-- it transforms the signal into usable features first
-
-## 7.4 Middle-Right Zone — AI Model
-This zone is the inference stage.
-
-Must include:
-- model block labeled clearly
-- input from extracted features
-- output decision panel:
-  - Leak
-  - No Leak
-- confidence value or bar
-
-This zone should look computational and intelligent, but still simple.
-
-## 7.5 Right Zone — ESP32 and Remote Dashboard
-This zone shows:
-- the ESP32 receiving the result
-- wireless transmission to the dashboard
-- the dashboard updating from normal to alert
-
-Must include dashboard cards or panels for:
-- status
-- leak presence
-- impact
-- risk
-- confidence
-- channel / location
-
----
-
-## 8. Complete Animation Sequence
-
-The animation should follow this exact narrative order.
-
-## Scene 1 — Full system visible in normal state
-The screen opens with the entire architecture visible.
-
-Show:
-- pipe with smooth water flow
-- sensors visible but idle
-- multiplexer idle
-- pipeline blocks dim or inactive
-- model inactive
-- ESP32 inactive
-- dashboard in normal state
-
-Dashboard initial values:
-- Status: Normal
-- Leak: No
-- Risk: Low
-- Impact: Minimal / None
-- Channel: — or Monitoring All
-
-Goal:
-- let the audience see the full system immediately
-- establish baseline normal operation
-
-## Scene 2 — Leak begins
-A small leak appears at one section of the pipe.
-
-Show:
-- a subtle crack / opening / point release
-- a small spray, droplet, or pressure escape
-- slight local disturbance in the water flow
-- wave energy spreading outward from the leak point
-
-Goal:
-- make clear that a leak creates a physical signature
-
-The leak should not be huge or catastrophic. It should look small but detectable.
-
-## Scene 3 — Sensor response
-The hydrophone and vibration sensor nearest the leak respond.
-
-Show:
-- hydrophone receiving acoustic activity
-- vibration sensor receiving structural vibration
-- each sensor lights up or pulses
-- each sensor emits its own distinct signal style
-
-Recommended differentiation:
-- hydrophone = smoother, acoustic-looking wave
-- vibration sensor = sharper, more mechanical pulse
-
-Goal:
-- explain the contribution of both sensing modalities
-
-## Scene 4 — Signal routing to multiplexer
-Signals travel from the active sensors into the multiplexer.
-
-Show:
-- animated lines converging into the multiplexer
-- channel selection or scanning effect
-- optional CH1/CH2/CH3 label changes
-- visual indication that multiple sensors share the same downstream processing path
-
-Goal:
-- make multiplexing understandable
-
-## Scene 5 — Raw signal stage
-The selected signal enters the processing pipeline.
-
-Show:
-- waveform panel labeled **Raw Signal**
-- slightly noisy, imperfect signal appearance
-
-Goal:
-- establish that sensor data arrives as an imperfect raw waveform
-
-## Scene 6 — Filtering / denoising
-The waveform transitions into a cleaner version.
-
-Show:
-- noise reduction effect
-- smoother, more meaningful waveform
-- label: **Filtering / Denoising**
-
-Goal:
-- explain that the system cleans the signal before analysis
-
-## Scene 7 — Feature extraction
-The signal transforms into a feature representation.
-
-Show:
-- waveform turning into a spectrogram or MFCC-like matrix
-- heatmap or frequency-time panel
-- label: **Feature Extraction**
-
-Optional support labels:
-- Spectrogram
-- MFCC
-- Frequency Features
-
-Goal:
-- visually communicate the transformation from signal to machine-readable features
-
-## Scene 8 — Model inference
-The extracted feature block moves into the AI model.
-
-Show:
-- model activation
-- decision animation
-- output resolving to:
-  - **Leak Detected**
-- confidence such as 92%
-
-Goal:
-- show that the model decides leak / no leak
-
-## Scene 9 — ESP32 communication
-The decision result moves into the ESP32 block.
-
-Show:
-- result packet or signal card entering ESP32
-- wireless transmission animation from ESP32 to dashboard
-- subtle radio-wave or packet motion
-
-Goal:
-- show edge decision followed by remote reporting
-
-## Scene 10 — Dashboard update
-The dashboard updates from normal to alert.
-
-New values may include:
-- Status: Leak Detected
-- Risk: Medium / High
-- Impact: Moderate / Significant
-- Confidence: 92%
-- Channel: CH2 or Pipe Segment B
-- Location: Approximate affected zone
-
-Goal:
-- end on the system’s value to the user/operator
-
----
-
-## 9. What the Dashboard Should Show
-
-The dashboard is not meant to be overly complex. It should be clean and presentation-ready.
-
-Required fields:
-- **System Status**
-- **Leak / No Leak**
-- **Risk**
-- **Impact**
-- **Confidence**
-- **Channel / Approximate Location**
-
-Recommended visual organization:
-- one main status card
-- one risk/impact card
-- one channel/location card
-- one small system summary area
-
-### Example normal state
-- System Status: Monitoring
-- Leak: No
-- Risk: Low
-- Impact: None
-- Confidence: —
-- Channel: All clear
-
-### Example alert state
-- System Status: Alert
-- Leak: Yes
-- Risk: High
-- Impact: Moderate
-- Confidence: 92%
-- Channel: CH2
-- Approximate Location: Pipe Segment B
-
----
-
-## 10. What the DSP Pipeline Should Show
-
-The DSP section must be visually educational.
-
-### Required transformation logic
-1. Raw waveform
-2. Filtered waveform
-3. Feature map
-
-### Do not use:
-- dense equations
-- full mathematical derivations
-- overly academic notation
-
-### Use:
-- transformation visuals
-- compact labels
-- clear arrows
-
-This section is meant to show signal processing conceptually but credibly.
-
----
-
-## 11. What the Model Should Show
-
-The model should be represented as a clear AI block.
-
-### It must communicate:
-- it receives extracted features
-- it performs binary classification
-- it outputs Leak / No Leak
-
-### Good visual options
-- neural-network-like stylized block
-- layered computation card
-- glowing classifier box
-- confidence bar or percentage
-
-### Avoid
-- overly complex deep learning diagrams
-- too many hidden layers or academic annotations
-- confusing math blocks
-
-For the video, conceptual clarity matters more than exact architecture depth.
-
----
-
-## 12. Motion Language
-
-The animation should guide understanding through motion.
-
-### Preferred motion types
-- pulse
-- glow
-- path movement
-- staged reveal
-- highlight transitions
-- waveform morphing
-- subtle wireless transmission effects
-
-### Motion principles
-- do not move everything at once
-- animate the active path more brightly than inactive blocks
-- use timing to tell the story
-- keep a calm idle state and a highlighted active state
-
-### Speed
-- medium-slow
-- readable during narration
-- no fast flashy transitions
-
----
-
-## 13. Color and State Logic
-
-Use consistent visual states.
-
-### Normal / idle
-- muted, calm colors
-- reduced glow
-- dashboard green/neutral state
-
-### Active sensing / processing
-- brighter highlight colors
-- moving signal lines
-- pulsing sensor states
-
-### Leak alert
-- warning emphasis
-- red/orange accent for leak event and dashboard alert
-- keep contrast readable
-
-### Suggested color semantics
-- flow/water = blue/cyan
-- hydrophone signal = cool blue
-- vibration signal = amber/orange/white
-- processing = electric cyan / teal
-- alert = orange/red
-- dashboard normal = green/neutral
-
----
-
-## 14. Labeling Requirements
-
-The following labels should appear clearly in the visualization:
-
-- Pipe Flow
-- Leak Point
-- Hydrophone
-- Vibration Sensor
-- Multiplexer
-- Raw Signal
-- Filtering / Denoising
-- Feature Extraction
-- AI Leak Classifier
-- ESP32
-- Remote Dashboard
-- Leak Detected
-- Risk
-- Impact
-- Confidence
-- Channel / Location
-
-All labels should be short, readable, and placed near their visual element.
-
----
-
-## 15. Implementation Requirements
-
-This should be implemented as a self-contained front-end technical animation.
-
-### Preferred implementation approaches
-- React + SVG + CSS animations
-- or React + SVG + Framer Motion
-
-### Strong preferences
-- all visuals generated in code
-- no external image dependency
-- no need for uploaded SVG assets in the first version
-- reusable components
-- easy to tweak timing and labels
-- suitable for screen recording
-
-### Recommended component structure
-- `PipeSection`
-- `LeakEffect`
-- `SensorNode`
-- `SignalPath`
-- `MultiplexerBlock`
-- `DSPPipeline`
-- `ModelBlock`
-- `ESP32Block`
-- `DashboardPanel`
-
----
-
-## 16. Interaction / Playback Requirements
-
-If practical, include:
-- replay button
-- pause / play toggle
-- step highlighting
-- optional stage progression control
-
-However, these controls are optional. The main priority is the quality of the automatic end-to-end animation.
-
----
-
-## 17. What This Visualization Must Not Do
-
-Do not make it look like:
-- a smart home dashboard
-- a website homepage
-- a generic data portal
-- a metal-pipe leak correlator interface
-- a map-heavy localization platform
-
-Do not include:
-- login flows
-- settings pages
-- cluttered charts
-- large paragraphs
-- irrelevant buttons
-- advanced localization algorithms based on correlation timing
-
-This project is **binary leak detection**, not industrial pinpoint localization.
-
----
-
-## 18. Technical Framing for the Final Video
-
-You can frame the system like this during narration:
-
-> HydroSense Jordan is a multiplexed multi-sensor leak detection hub designed for plastic water pipes. Hydrophones and vibration sensors monitor multiple pipe points, their signals are routed through a multiplexer, processed by a lightweight pipeline, classified by an AI model as leak or no leak, and then transmitted by an ESP32 to a remote dashboard showing risk, impact, and the affected channel.
-
-This is the exact architecture the animation should explain.
-
----
-
-## 19. Small Prompt to Use After This Spec
-
-Use the following short prompt with the markdown file attached or pasted as context:
-
-> Build the full animated visualization described in the attached markdown spec for HydroSense Jordan. Implement it as a single-screen technical explainer using React and SVG. Show the complete architecture from normal pipe flow to leak detection, sensor activation, multiplexer routing, DSP pipeline, AI binary classification, ESP32 communication, and dashboard alert update. Generate all visuals in code, keep the design presentation-ready for screen recording, and prioritize clarity, educational flow, and smooth readable animation.
-
----
-
-## 20. Final Goal
-
-The final output should feel like:
-- a polished capstone engineering animation
-- a technically accurate process explainer
-- a clear visualization of the full HydroSense architecture
-- something that can be recorded directly for your project video
-
-It should be strong enough that a viewer can understand the process even if the narration is reduced.
+HydroSense Jordan — Prototype Implementation Plan
+7-Day Hackathon Sprint | Acoustic Leak Detection Demo
+PROTOTYPE OVERVIEW
+This document defines the implementation plan for a functional, end-to-end prototype of the HydroSense Jordan leak detection system. The goal is a working demo that demonstrates the full signal-to-decision pipeline: two sensors on a metal pipe test rig, raw data streamed to a laptop, processed in real time, and visualized on a live dashboard.
+
+The prototype is scoped for two conditions only:
+
+Class 0 — Normal Flow: Water running, no leak
+Class 1 — Leak: Small controlled crack or orifice in the pipe
+This is not a production deployment. It is an engineering proof-of-concept built to validate the core technical approach within one week.
+
+SYSTEM ARCHITECTURE
+Code
+┌──────────────────────────────────────────────────────────────┐
+│                     HARDWARE TEST RIG                        │
+│                                                              │
+│   [Metal Pipe with Water Flow]                               │
+│         │                  │                                 │
+│   [Hydrophone]      [Vibration Sensor / Accelerometer]       │
+│   (Primary CH)      (Secondary CH)                          │
+│         │                  │                                 │
+│         └──────┬───────────┘                                 │
+│                │ Analog signals                              │
+│         [Op-Amp Preamp Circuit]                              │
+│                │                                             │
+│           [ESP32 ADC]                                        │
+│           GPIO34 (Hydrophone)                                │
+│           GPIO35 (Vibration)                                 │
+│                │                                             │
+│         USB Serial @ 921,600 baud                            │
+│         Binary struct frames                                 │
+└────────────────┼─────────────────────────────────────────────┘
+                 │
+┌────────────────▼─────────────────────────────────────────────┐
+│                  LAPTOP — EDGE HUB (Python)                  │
+│                                                              │
+│  ┌──────────────────┐  deque   ┌────────────────────────┐   │
+│  │ serial_reader.py │─────────►│   dsp_pipeline.py      │   │
+│  │ Thread 1         │  shared  │   Thread 2             │   │
+│  │                  │  buffer  │  1. Detrend            │   │
+│  │ Parse frames     │          │  2. Butterworth Filter │   │
+│  │ Decode int16     │          │  3. FFT + Windowing    │   │
+│  │ Push to deque    │          │  4. Feature Extraction │   │
+│  └──────────────────┘          └────────────┬───────────┘   │
+│                                             │               │
+│                                ┌────────────▼───────────┐   │
+│                                │  inference_engine.py   │   │
+│                                │  RandomForest.predict()│   │
+│                                │  → leak / no-leak      │   │
+│                                │  → confidence score    │   │
+│                                └────────────┬───────────┘   │
+│                                             │ JSON result   │
+│                                ┌────────────▼───────────┐   │
+│                                │  api_server.py         │   │
+│                                │  Thread 3              │   │
+│                                │  FastAPI + SSE         │   │
+│                                └────────────┬───────────┘   │
+└─────────────────────────────────────────────┼───────────────┘
+                                              │ HTTP / SSE
+                              ┌───────────────▼──────────────┐
+                              │  Dashboard (Browser)         │
+                              │  hydrosensejo.netlify.app    │
+                              │  • Leak / No-Leak indicator  │
+                              │  • Confidence score gauge    │
+                              │  • Live signal waveform      │
+                              │  • Recent event log          │
+                              └──────────────────────────────┘
+SENSOR ROLES
+Sensor	Channel	Role in Prototype
+Hydrophone	Primary (GPIO34)	Main acoustic detection channel. Directly comparable to the Southampton dataset's hydrophone recordings. Used as the primary feature source for the ML model.
+Vibration Sensor / Accelerometer	Secondary (GPIO35)	Supplementary channel. Provides additional features and cross-sensor comparison. Not fused at model level in v1 — kept as parallel input for analysis and future improvement.
+Dataset Alignment Note: The Southampton dataset (eprints 489055) was recorded using hydrophones and accelerometers on MDPE plastic pipes. Our test rig uses a metal pipe, which has different acoustic propagation properties. The dataset is used for initial pipeline development and baseline model training only. Final tuning and validation must include signal data collected from our own hardware setup under our specific pipe and sensor conditions.
+
+FILE STRUCTURE
+Code
+hydrosense-jordan/
+│
+├── config.py                        ← Single source of truth for all constants
+│
+├── data/
+│   ├── raw/                         ← Downloaded Southampton ZIPs (not extracted manually)
+│   │   ├── Steady_state_leak_signals.zip
+│   │   ├── Background_noise.zip
+│   │   └── Pipe_material_characterisation.zip
+│   ├── sampled/                     ← Auto-extracted subset of .mat files
+│   ├── recorded/                    ← Our own hardware recordings (.csv or .npy)
+│   │   ├── normal_flow/
+│   │   └── leak/
+│   └── features_balanced.csv        ← Final training-ready feature matrix
+│
+├── scripts/                         ← Offline, run-once pipeline
+│   ├── 01_smart_sampler.py          ← Stratified extraction from ZIP without full unzip
+│   ├── 02_feature_extractor.py      ← 4-stage DSP on sampled files → features_balanced.csv
+│   └── 03_train_model.py            ← Train RF → model.pkl + scaler.pkl
+│
+├── models/
+│   ├── random_forest_model.pkl      ← Trained classifier
+│   └── scaler.pkl                   ← StandardScaler (must match training exactly)
+│
+├── edge_hub/                        ← Live real-time inference (runs on laptop during demo)
+│   ├── serial_reader.py             ← Thread 1: read ESP32 frames → shared deque
+│   ├── dsp_pipeline.py              ← Thread 2: DSP + feature extraction per window
+│   ├── inference_engine.py          ← Load model, run predict(), update result_store
+│   ├── api_server.py                ← Thread 3: FastAPI + SSE endpoint
+│   └── main.py                      ← Orchestrator: start all threads, handle shutdown
+│
+├── firmware/
+│   └── hydrosense_esp32/
+│       ├── hydrosense_esp32.ino     ← Main sketch: ADC init, timer, serial TX
+│       ├── sampler.h                ← Hardware timer ISR for exact-fs dual-channel sampling
+│       └── serial_framer.h          ← Binary frame packer with sync bytes + checksum
+│
+├── notebooks/
+│   └── pipeline_validation.ipynb    ← Visual checks: PSD, filtered signal, FFT, feature dist.
+│
+└── requirements.txt
+config.py — Constants Reference
+Python
+# Sampling
+FS              = 10000       # Hz — must match ESP32 timer and dataset fs
+WINDOW_SIZE     = 1024        # Samples per DSP window (~102ms at 10kHz)
+HOP_SIZE        = 512         # 50% overlap between windows
+
+# Butterworth Bandpass Filter
+FILTER_LOW_HZ   = 100         # Hz — low cutoff (removes DC drift and very low rumble)
+FILTER_HIGH_HZ  = 4000        # Hz — high cutoff (leak acoustic energy band for plastic/metal)
+FILTER_ORDER    = 4
+
+# Serial
+SERIAL_PORT     = "COM3"      # Update to match your OS (e.g. /dev/ttyUSB0 on Linux)
+BAUD_RATE       = 921600
+
+# Inference
+CONFIDENCE_THRESHOLD = 0.80   # Minimum confidence to trigger LEAK alert
+
+# Paths
+MODEL_PATH      = "models/random_forest_model.pkl"
+SCALER_PATH     = "models/scaler.pkl"
+FEATURES_PATH   = "data/features_balanced.csv"
+DAY-BY-DAY SPRINT ROADMAP
+📅 DAY 1 — Environment Setup & Smart Dataset Extraction
+Objective: Python environment ready, Southampton dataset subset extracted, config.py defined.
+
+Tasks:
+
+ Create GitHub repository with the file structure above
+ Install dependencies: numpy scipy scikit-learn pandas matplotlib pyserial fastapi uvicorn joblib h5py
+ Download all three Southampton ZIP archives — do not extract manually
+ Define config.py with all constants above
+ Write and run scripts/01_smart_sampler.py:
+Opens ZIPs in-memory using zipfile.ZipFile — no full extraction
+Lists all .mat file paths, groups by subdirectory (each subdirectory = one condition class)
+Performs stratified random sampling: selects 10 files per class
+Extracts only the selected files to data/sampled/
+Expected runtime: under 5 minutes on a standard laptop
+End-of-Day Check: data/sampled/ contains a small, balanced set of .mat files with even class representation.
+
+📅 DAY 2 — DSP Pipeline on Dataset
+Objective: Run all 4 signal processing stages on the sampled files and produce features_balanced.csv.
+
+Tasks:
+
+ Write scripts/02_feature_extractor.py implementing the 4-stage pipeline:
+Stage 1 — Pre-processing:
+
+Load each .mat file using scipy.io.loadmat()
+Extract hydrophone channel (primary) and accelerometer channel (secondary)
+Apply scipy.signal.detrend() to remove DC offset
+Assert that file fs matches config.FS
+Stage 2 — Pipe Characterisation:
+
+Load MDPE ring files from Pipe_material_characterisation.zip
+Compute PSD using scipy.signal.welch()
+Use PSD to confirm or adjust FILTER_LOW_HZ / FILTER_HIGH_HZ in config.py
+Stage 3 — Signal Processing:
+
+Design Butterworth bandpass filter: scipy.signal.butter(N, [low, high], btype='band', fs=FS, output='sos')
+Apply with scipy.signal.sosfiltfilt() (zero-phase, no temporal distortion)
+Apply Hann window to each WINDOW_SIZE frame
+Compute FFT: np.fft.rfft()
+Stage 4 — Feature Extraction:
+
+Domain	Features Extracted
+Time Domain	RMS, Peak Amplitude, Crest Factor, Kurtosis, Skewness, Zero-Crossing Rate
+Frequency Domain	Spectral Centroid, Spectral Bandwidth, Spectral Rolloff, Top-5 FFT magnitude bins
+Cross-Sensor	Pearson Correlation (hydrophone vs. accelerometer), Time Delay of Arrival (TDOA via cross-correlation)
+ Run with concurrent.futures.ProcessPoolExecutor(max_workers=4) for speed
+ Output: data/features_balanced.csv with label column leak (0 or 1)
+ Open notebooks/pipeline_validation.ipynb and visually verify:
+Raw vs. detrended signal
+PSD before and after filtering
+FFT showing frequency content difference between leak and no-leak conditions
+End-of-Day Check: features_balanced.csv exists, classes are balanced, no NaN values.
+
+📅 DAY 3 — Model Training & Validation
+Objective: Trained, serialized random_forest_model.pkl with measurable classification accuracy.
+
+Tasks:
+
+ Write scripts/03_train_model.py:
+Load features_balanced.csv
+Fit StandardScaler on training set only → save scaler.pkl
+Train RandomForestClassifier(n_estimators=200, class_weight='balanced', random_state=42)
+Evaluate with StratifiedKFold(n_splits=5) cross-validation
+Print: accuracy, F1-score, confusion matrix
+Save models/random_forest_model.pkl
+ Check model.predict_proba() runtime: must be < 5ms per window on your laptop
+ Plot feature importances — note top 10 features driving the decision
+Important: The model trained here is a baseline trained on Southampton data (MDPE plastic pipes, lab conditions). It will likely need re-tuning once hardware data from our metal pipe rig is collected on Day 4. This is expected and normal.
+
+End-of-Day Check: Model serialized, cross-validation F1 > 0.80 on Southampton data subset.
+
+📅 DAY 4 — ESP32 Firmware
+Objective: ESP32 streams clean, binary-framed dual-channel acoustic data to the laptop over USB serial.
+
+Tasks:
+
+ Write firmware/hydrosense_esp32/sampler.h:
+
+Uses hw_timer_t hardware timer interrupt to trigger ADC reads at exactly config.FS Hz
+Reads GPIO34 (hydrophone) and GPIO35 (vibration sensor) on each tick
+Stores samples in a ping-pong double buffer to prevent read/write conflicts between ISR and main loop
+ Write firmware/hydrosense_esp32/serial_framer.h:
+
+Packs samples into binary frames: [0xAA][0xBB][int16 hydro][int16 vib][XOR checksum][0xFF]
+Sync bytes 0xAA 0xBB allow the PC-side reader to re-lock framing after any interruption
+XOR checksum covers both sample bytes
+ Write firmware/hydrosense_esp32/hydrosense_esp32.ino:
+
+Initialize both ADC pins
+Start hardware timer at FS Hz
+Main loop: when double-buffer is ready, call framer and transmit over Serial at 921,600 baud
+ Hardware assembly on test rig:
+
+Mount hydrophone in contact with metal pipe (water-side or pipe wall)
+Mount accelerometer/vibration sensor on pipe exterior
+Connect both sensors through op-amp preamp → ESP32 ADC pins
+Verify signal levels stay within ESP32 ADC range (0–3.3V)
+ Calibration test:
+
+Open laptop serial monitor, confirm sync bytes are visible
+Run normal flow: observe signal on both channels
+Simulate leak (small valve, crack, or controlled orifice): confirm signal change is visible
+Record 2–3 minutes of both conditions as .csv using a simple Python logger → save to data/recorded/
+End-of-Day Check: ESP32 streams stable binary frames at 10 kHz. Both conditions produce visually distinct signal signatures.
+
+📅 DAY 5 — Real-Time Edge Hub (Laptop Inference Engine)
+Objective: Running Python script that reads the ESP32 stream, runs the full DSP + ML pipeline, and updates a shared result in real time.
+
+Tasks:
+
+ Write edge_hub/serial_reader.py (Thread 1):
+
+Opens serial port from config.SERIAL_PORT at config.BAUD_RATE
+Scans byte stream for 0xAA 0xBB sync bytes — re-locks automatically on desync
+Validates XOR checksum on each frame; drops corrupted frames silently
+Decodes int16 → float32 normalized samples
+Pushes to collections.deque(maxlen=WINDOW_SIZE * 8) — circular, thread-safe buffer
+ Write edge_hub/dsp_pipeline.py (Thread 2):
+
+Waits until deque contains ≥ WINDOW_SIZE samples
+Pulls a WINDOW_SIZE slice with HOP_SIZE overlap (50%)
+Runs Stages 1–4 using identical parameters as training in config.py
+Returns a np.array of shape (1, n_features) — exact same feature set as training
+ Write edge_hub/inference_engine.py:
+
+Loads model.pkl and scaler.pkl at startup using joblib.load()
+Accepts feature vector from dsp_pipeline
+Runs scaler.transform() → model.predict_proba()
+Returns: {"leak_detected": bool, "confidence": float, "timestamp": str}
+Writes result to result_store dict protected by threading.Lock()
+ Re-tune model with hardware data:
+
+Use the .csv recordings from Day 4 (data/recorded/)
+Run same feature extractor (02_feature_extractor.py) on hardware recordings
+Append to features_balanced.csv, retrain model
+Verify inference accuracy improves on conditions matching the real test rig
+End-of-Day Check: main.py (partially wired) prints live classification results to console. Leak simulation causes leak_detected: true reliably.
+
+📅 DAY 6 — API Server & Dashboard Integration
+Objective: Live dashboard in the browser shows real-time leak status fed directly from the ESP32.
+
+Tasks:
+
+ Write edge_hub/api_server.py (Thread 3):
+FastAPI application with the following endpoints:
+Endpoint	Method	Returns
+/status	GET	Latest result_store JSON (for polling fallback)
+/stream	GET	Server-Sent Events (SSE) — pushes every new inference result
+/health	GET	{"serial_connected": bool, "model_loaded": bool}
+Add CORS middleware permitting https://hydrosensejo.netlify.app
+
+SSE format: data: {"leak_detected": true, "confidence": 0.91, "timestamp": "..."}\n\n
+
+ Write edge_hub/main.py:
+
+Instantiates and starts all 3 threads
+Handles KeyboardInterrupt gracefully — closes serial port, stops threads cleanly
+Prints color-coded status to console on each inference: 🔴 LEAK / 🟢 CLEAR
+ Update Netlify frontend to consume the SSE stream:
+
+Connect via EventSource('http://LAPTOP_IP:8000/stream')
+Display leak/no-leak status with clear visual indicator (color change + label)
+Display confidence score as a percentage gauge
+Display scrolling live waveform (hydrophone channel, last 1 second of raw samples)
+Display a timestamped event log of recent detections
+ Full end-to-end test on local network: ESP32 → laptop → browser on a second device
+
+End-of-Day Check: Dashboard updates live in browser. Leak simulation triggers a visible alert within 1 second.
+
+📅 DAY 7 — Integration Testing & Demo Preparation
+Objective: A reliable, rehearsed demo that works consistently under presentation conditions.
+
+Tasks:
+
+Morning — Testing:
+
+ Run 60-minute continuous streaming test — check for serial desync or buffer overflow
+ Run 20 controlled leak / no-leak transitions — record hit rate
+ Adjust config.CONFIDENCE_THRESHOLD if needed based on observed distribution
+ Verify dashboard refreshes within 1 second of physical event on a second device
+Afternoon — Polish & Failsafe:
+
+ Write startup.bat / startup.sh — single command to launch everything:
+bash
+python edge_hub/main.py --port COM3 --baud 921600
+ Implement --demo-mode flag in main.py:
+Replays a pre-recorded hardware session from data/recorded/
+Simulates live stream timing at real fs
+Use this if ESP32 or serial connection fails during the actual presentation
+ Prepare a clean recording of a successful detection run as a backup video
+ Rehearse the full demo sequence 3 times:
+Start system, show CLEAR baseline with normal flow
+Open leak valve / introduce crack
+Dashboard transitions to LEAK alert with confidence score
+Close leak, system returns to CLEAR
+FILES TO WRITE (Priority Order)
+#	File	Day	Lang	Description
+1	config.py	1	Python	All shared constants — fs, filter bounds, paths, thresholds
+2	scripts/01_smart_sampler.py	1	Python	Stratified ZIP sampling — no full extraction
+3	scripts/02_feature_extractor.py	2	Python	4-stage DSP → features_balanced.csv
+4	scripts/03_train_model.py	3	Python	RF training + evaluation → model.pkl, scaler.pkl
+5	firmware/sampler.h	4	C++	Hardware timer ISR, dual-channel ADC, ping-pong buffer
+6	firmware/serial_framer.h	4	C++	Binary frame packer with sync bytes and XOR checksum
+7	firmware/hydrosense_esp32.ino	4	C++	Main sketch: ADC init, timer start, serial TX loop
+8	edge_hub/serial_reader.py	5	Python	Thread 1: parse frames, decode samples, push to deque
+9	edge_hub/dsp_pipeline.py	5	Python	Thread 2: live 4-stage DSP → feature vector per window
+10	edge_hub/inference_engine.py	5	Python	Load model, transform, predict, update result_store
+11	edge_hub/api_server.py	6	Python	Thread 3: FastAPI + SSE endpoint
+12	edge_hub/main.py	6	Python	Orchestrator: wire threads, graceful shutdown, CLI args
+13	frontend/stream_client.js	6	JavaScript	SSE consumer → update dashboard widgets
+RISK REGISTER
+Risk	Likelihood	Impact	Mitigation
+Model trained on MDPE plastic data underperforms on metal pipe rig	High	High	Expected. Collect hardware recordings on Day 4 and retrain. Treat Southampton data as bootstrap only.
+ESP32 ADC noise or signal saturation	Medium	High	Use GPIO34–39 (input-only, most linear). Add hardware RC low-pass filter before ADC pin. Verify voltage range with oscilloscope or multimeter before connecting.
+Serial desync during live demo	Medium	High	Sync byte sequence 0xAA 0xBB + auto-relock loop in serial_reader.py. System recovers within one dropped frame.
+Feature mismatch between training and inference	Medium	Critical	config.py is the single source of truth. Training and inference both import from it. Never hardcode filter or window values in two places.
+Laptop firewall blocks browser SSE connection	Low	Medium	Test CORS and local firewall on Day 6. Use mobile hotspot to put both devices on same LAN if needed.
+Hardware failure at presentation	Low	Critical	--demo-mode flag in main.py replays a pre-recorded session. Backup video of a clean run as final fallback.
+WHAT THIS PROTOTYPE DEMONSTRATES
+Capability	Status in Prototype
+Dual-sensor acoustic acquisition	✅ Hydrophone + vibration sensor, both channels live
+Real-time USB serial streaming	✅ Binary-framed, 10 kHz, reliable sync
+4-stage DSP pipeline on laptop	✅ Detrend → Butterworth → FFT → Feature extraction
+Binary ML classification	✅ Random Forest, leak vs. no-leak, confidence score
+Live dashboard with visual alert	✅ SSE-fed, sub-second latency, browser-based
+Use of reference dataset	✅ Southampton eprints 489055 for bootstrap training
+Hardware-tuned model	✅ Retrained on Day 4/5 using own pipe recordings
