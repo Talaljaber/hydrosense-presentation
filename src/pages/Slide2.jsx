@@ -104,11 +104,11 @@ export default function Slide2() {
             <button onClick={() => { setPlaying(false); setStage(p => Math.min(p+1,LEAK_STAGES.length)); }} disabled={s>=LEAK_STAGES.length} className="w-9 h-9 flex items-center justify-center rounded-lg text-slate-400 hover:bg-[#1e293b] text-lg disabled:opacity-20 transition-all">›</button>
           </div>
         </div>
-        <div className="flex gap-1.5">
+        <div className="flex gap-1">
           {LEAK_STAGES.map(ls => (
             <button key={ls.id} onClick={() => { setPlaying(false); setStage(ls.id); }}
-              style={s===ls.id ? { backgroundColor: ls.color, color: '#040c17', boxShadow: `0 0 12px ${ls.color}55` } : {}}
-              className={`w-8 h-8 rounded-full text-xs font-bold transition-all ${s===ls.id ? 'ring-4' : s>ls.id ? 'bg-[#0d2015] text-emerald-500 border border-emerald-800/50' : 'text-slate-600 border border-[#1e293b] hover:border-slate-500 hover:text-slate-300'}`}>
+              style={s===ls.id ? { backgroundColor: ls.color, color: '#040c17', boxShadow: `0 0 8px ${ls.color}55` } : {}}
+              className={`w-5 h-5 rounded-full text-[9px] font-bold transition-all ${s===ls.id ? 'ring-2' : s>ls.id ? 'bg-[#0d2015] text-emerald-500 border border-emerald-800/50' : 'text-slate-700 border border-[#1e293b] hover:border-slate-600 hover:text-slate-400'}`}>
               {ls.id}
             </button>
           ))}
