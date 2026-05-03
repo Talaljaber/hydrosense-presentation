@@ -80,13 +80,13 @@ export default function Slide4() {
         Theoretical payback estimate based on reducing 10% of NRW-related economic value (not claiming all NRW is physical leakage).
       </motion.div>
 
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.6 }}
-        className="mt-16 text-3xl md:text-4xl font-bold text-slate-100"
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+        className="w-full max-w-5xl mx-auto mt-2 text-slate-600 text-xs italic text-center"
       >
-        "In Jordan, every drop has value — HydroSense is the solution."
+        * Theoretical payback based on reducing 10% of NRW-related economic value.
       </motion.div>
 
     </div>

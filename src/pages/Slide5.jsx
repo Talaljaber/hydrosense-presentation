@@ -168,7 +168,7 @@ export default function Slide5() {
             className="text-slate-200 leading-relaxed whitespace-nowrap"
             style={{ fontSize: 'clamp(18px, 2.4vw, 28px)', fontWeight: 300, letterSpacing: '0.01em' }}
           >
-            In a world where every{' '}
+            In Jordan, every{' '}
             <span style={{
               fontWeight: 700,
               background: 'linear-gradient(90deg, #7dd3fc, #38bdf8)',
@@ -192,7 +192,7 @@ export default function Slide5() {
           >
             <div className="w-16 h-px bg-slate-700 mb-3" />
             <span className="text-slate-500 text-xs font-mono tracking-[0.25em] uppercase">
-              Built for Jordan · Built for the world
+              Built for Jordan · Ready to Scale
             </span>
           </motion.div>
         )}
